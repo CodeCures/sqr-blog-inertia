@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Helpers\PostImage;
+use App\Scopes\UserAuthenticatedScope;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -105,5 +107,22 @@ class Post extends Model
     protected function scopePublicationDate()
     {
         return Carbon::parse($this->published_at)->toFormattedDateString();
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope(new UserAuthenticatedScope);
+
+        static::creating(function ($post) {
+            if (auth()->check()) {
+                $post->user_id = auth()->id();
+            }
+            $post->slug = Str::slug(Str::words($post->title, 5, ''), '-');
+        });
     }
 }
