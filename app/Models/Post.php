@@ -52,4 +52,19 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * scopeFilter
+     *
+     * @param  mixed $query
+     * @param  mixed $filters
+     * @return void
+     */
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn ($query, $search) => 
+                $query->where('title', 'like', '%'. $search . '%')
+                      ->orWhere('description', 'like', '%'. $search .'%')  
+            );
+    }
 }
