@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\PostImage;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
@@ -79,6 +81,18 @@ class Post extends Model
     {
         $query->when($order['order'] ?? 'DESC', fn ($query, $order) => 
             $query->orderBy('published_at', $order)
+        );
+    }
+
+     /**
+     * Get the post's image.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => new PostImage(),
         );
     }
 }
