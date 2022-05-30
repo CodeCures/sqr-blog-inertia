@@ -14,11 +14,4 @@ class PostService {
                     ->simplePaginate($limit);   
     }
 
-    public static function getPostBySlug($slug)
-    {
-        return Cache::remember('post', 10, function () use ($slug) {
-            return optional(Post::firstWhere('slug', $slug));
-        });
-    }
-
 }
