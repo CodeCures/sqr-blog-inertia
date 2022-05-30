@@ -44,7 +44,7 @@ To install this app make sure your php version is ^8 and follow the steps bellow
 
 1. Clone the repository
     ```
-    git clone repo
+    git clone https://github.com/CodeCures/sqr-blog.git
     ```
 2. Rename ``` .env.example ``` to ``` .env ``` and set your prefered database setting within the file
 3. Run ``` composer install ``` to install all the packages
