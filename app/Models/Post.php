@@ -21,4 +21,16 @@ class Post extends Model
     public $cacheFor = 3600;
 
     public $timestamps = false;
+
+     /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id',
+        'title',
+        'description',
+        'state',
+    ];
 }
