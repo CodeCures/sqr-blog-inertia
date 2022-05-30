@@ -33,4 +33,13 @@ class Post extends Model
         'description',
         'state',
     ];
+
+    /**
+     * casts
+     *
+     * @var array
+     */
+    protected $casts = [
+        'state' => PostState::class
+    ];
 }
