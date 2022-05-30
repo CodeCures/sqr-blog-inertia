@@ -48,11 +48,12 @@ To install this app make sure your php version is ^8 and follow the steps bellow
     ```
 2. Rename ``` .env.example ``` to ``` .env ``` and set your prefered database setting within the file
 3. Run ``` composer install ``` to install all the packages
-4. Run ``` php artisan serve ``` to start your development server
-5. Then you can now access you website from ``` http://localhost:8000 ```
+4. Run ``` php artisan migrate --seed `` to migrate your database schema and populate it with some fake data
+5. Run ``` php artisan serve ``` to start your development server
+6. Then you can now access you website from ``` http://localhost:8000 ```
 
 ## Importing Posts
-to import post you will need to run 
+To import post you will need to run 
 ```
 php artisan post:import
 ```
