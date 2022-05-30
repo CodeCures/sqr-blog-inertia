@@ -95,4 +95,14 @@ class Post extends Model
             get: fn () => new PostImage(),
         );
     }
+
+    /**
+     * format post date.
+     *
+     * @return String
+     */
+    protected function scopePublicationDate()
+    {
+        return Carbon::parse($this->published_at)->toFormattedDateString();
+    }
 }
