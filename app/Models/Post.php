@@ -19,4 +19,6 @@ class Post extends Model
      * @var int|\DateTime
      */
     public $cacheFor = 3600;
+
+    public $timestamps = false;
 }
