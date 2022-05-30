@@ -67,4 +67,18 @@ class Post extends Model
                       ->orWhere('description', 'like', '%'. $search .'%')  
             );
     }
+
+    /**
+     * scopeOrder
+     *
+     * @param  mixed $query
+     * @param  mixed $order
+     * @return void
+     */
+    public function scopeOrder($query, $order)
+    {
+        $query->when($order['order'] ?? 'DESC', fn ($query, $order) => 
+            $query->orderBy('published_at', $order)
+        );
+    }
 }
