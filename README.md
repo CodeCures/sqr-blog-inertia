@@ -67,5 +67,7 @@ Post importation is also scheduled to run every 30 Minutes to check for what has
 ## Testing
 For simpicity i'm going to use the official [Laravel Dusk](https://laravel.com/docs/8.x/dusk) for end to end testing of the application. 
 
-Before running the tests please make sure to disable the ``` QueryCacheable ``` trait in the post model as this may cause issues during the tests. I have two tests for the app ``` AuthTest ``` and ``` PostTest ``` you may want to run them separated to save time.
+Run ``` php artisan dusk:chrome-driver --detect ``` to install the needed chrome driver
+
+Before running the tests please make sure to disable the ``` QueryCacheable ``` trait in the post model, this is disabled by default but if not, you should disable it as this may cause issues during the tests. I have two tests for the app ``` AuthTest ``` and ``` PostTest ``` you may want to run them separated to save time but you can run all at once.
 
