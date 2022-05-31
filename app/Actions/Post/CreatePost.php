@@ -16,7 +16,11 @@ class CreatePost
      */
     public function execute(array $data) : Post
     {
-        return Post::create($data);
+        return Post::UpdateOrCreate($data, 
+                        [
+                            'title' => $data['title'], 
+                            'description' => $data['description'],
+                        ]);
     }
 
 }
