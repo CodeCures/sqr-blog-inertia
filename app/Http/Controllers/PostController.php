@@ -74,11 +74,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(PostRequest $request, Post $post, PostService $postService)
     {
         $this->authorize('update-post');
-
-        $post->update($request->validated());
+        
+        $postService->updatePost($post, $request->validated());
 
         return to_route('dashboard')->with('msg', 'post updated successfully!');
     }
