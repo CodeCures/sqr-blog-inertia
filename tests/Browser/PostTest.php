@@ -110,7 +110,7 @@ class PostTest extends DuskTestCase
                     ->clickLink('edit')
                     ->type('title', $post->title.' is yet to come')
                     ->type('description', $post->title)
-                    ->press('Update Now')
+                    ->click('@submit-button')
                     ->assertRouteIs('dashboard')
                     ->assertSee('post updated successfully!');
         });
