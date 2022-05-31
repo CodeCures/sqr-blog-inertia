@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PostState;
 use App\Helpers\PostImage;
 use App\Scopes\UserAuthenticatedScope;
 use Carbon\Carbon;
@@ -37,6 +38,7 @@ class Post extends Model
         'title',
         'description',
         'state',
+        'published_at'
     ];
 
     /**
