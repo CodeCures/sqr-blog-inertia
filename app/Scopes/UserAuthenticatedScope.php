@@ -18,7 +18,7 @@ class UserAuthenticatedScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if ($this->isDashboardRoute()) {
+        if ($this->isAllowedRoute()) {
             return auth()->user()->isAdmin() ?: $builder->where('user_id', auth()->id());
         }
         
@@ -28,5 +28,28 @@ class UserAuthenticatedScope implements Scope
     public function isDashboardRoute()
     {
         return request()->routeIs('dashboard');
+    }
+
+    public function isEditRoute()
+    {
+        return request()->routeIs('post.edit');
+    }
+
+    public function isUpdateRoute()
+    {
+        return request()->routeIs('post.update');
+    }
+
+    public function isDeleteRoute()
+    {
+        return request()->routeIs('post.delete');
+    }
+
+    public function isAllowedRoute()
+    {
+        return $this->isDashboardRoute() || 
+               $this->isEditRoute() ||
+               $this->isUpdateRoute() ||
+               $this->isDeleteRoute();
     }
 }
