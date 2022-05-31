@@ -21,7 +21,7 @@ class UserFactory extends Factory
         return [
             'name' => 'Blog Admin',
             'email' => 'admin@blog.test',
-            'password' => bcrypt('pass123'),
+            'password' => 'pass123',
             'role' => UserRole::Admin 
         ];
     }
