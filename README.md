@@ -42,7 +42,7 @@ The app is going be a monolith but of course it can be implimented as an SPA usi
 Enable the QueryCachable trait in post model only if you wish to cache the result of each query.
 
 ## Installation
-To install this app make sure your php version is ^8 and follow the steps bellow:
+To install this app make sure your php version is ^8.1 and follow the steps bellow:
 
 1. Clone the repository
     ```
