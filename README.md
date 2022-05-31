@@ -18,26 +18,22 @@ Our customer is a very popular blogger, who generates between 2 and 3 posts an h
 - The App must have an auth (login, register) page
 - The App must have a dashboard area
 - The App must have two user types (admin, user/guest/reader)
-- The App must be able to import external json resource
 - Imported Resource must belong to admin
 - App User must be able to register and login
 - Registered user Must be able to create new post
 - A user must not be able to update/delete a post
-- Posts must be sortable by publication_date
+
 
 ## Non Functional Requirements
 
 - Posts should be searchable
 - Admin should be able to delete/update a post
+- Posts must be sortable by publication_date
+- The App must be able to import external json resource
 - Application should be tested
 
 ## Software Nature
-The app is going be a page monolith implimented but i do hope to make a Single Page Application using [Laravel](https://laravel.com/) [Inertia](https://inertiajs.com) package if i have the time to do that
-
-
-
-## Testing
-For simpicity i'm going to use the official [Laravel Dusk](https://laravel.com/docs/8.x/dusk) for end to end testing of the application.
+The app is going be a monolith but of course it can be implimented as an SPA using any of the front end frameworks, wich i may not have the time to go into.
 
 ## Installation
 To install this app make sure your php version is ^8 and follow the steps bellow:
@@ -48,14 +44,22 @@ To install this app make sure your php version is ^8 and follow the steps bellow
     ```
 2. Rename ``` .env.example ``` to ``` .env ``` and set your prefered database setting within the file
 3. Run ``` composer install ``` to install all the packages
-4. Run ``` php artisan migrate --seed `` to migrate your database schema and populate it with some fake data
+4. Run ``` php artisan migrate --seed ``` 
 5. Run ``` php artisan serve ``` to start your development server
-6. Then you can now access you website from ``` http://localhost:8000 ```
+6. Then you can now access you website from ``` http://localhost:8000 ``` or visit ``` http://blog.test ``` depending on your configurations
+7. admin email is ``` admin@blog.test ``` and password is ``` pass123 ```
 
 ## Importing Posts
 To import post you will need to run 
 ```
 php artisan post:import
 ```
-make sure you have a good internet connection before you do this
+make sure you have a good internet connection before you do this.
+
+Post importation is also scheduled to run every 30 Minutes to check for what has changed and import it. you can run ``` php artisan schedule:list ``` to see the list of scheduled tasks
+
+## Testing
+For simpicity i'm going to use the official [Laravel Dusk](https://laravel.com/docs/8.x/dusk) for end to end testing of the application. 
+
+Before running the tests please make sure to disable the ``` QueryCacheable ``` trait in the post model as this may cause issues during the tests. I have two tests for the app ``` AuthTest ``` and ``` PostTest ``` you may want to run them separated to save time.
 
