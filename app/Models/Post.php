@@ -16,7 +16,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    use HasFactory, QueryCacheable;
+    use HasFactory;
+    // use QueryCacheable;
 
     /**
      * Specify the amount of time to cache queries.
