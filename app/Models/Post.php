@@ -14,7 +14,6 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
 
 class Post extends Model
 {
-    use HasFactory;
 
     use HasFactory;
     // use QueryCacheable;
