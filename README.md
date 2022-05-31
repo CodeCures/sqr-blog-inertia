@@ -32,8 +32,14 @@ Our customer is a very popular blogger, who generates between 2 and 3 posts an h
 - The App must be able to import external json resource
 - Application should be tested
 
+## Note
+I am going to add an extra column state to post table. This is to determine the state (draft, published, archived) of the object and
+allow only the published posts on the home page
+
 ## Software Nature
 The app is going be a monolith but of course it can be implimented as an SPA using any of the front end frameworks, wich i may not have the time to go into.
+
+Enable the QueryCachable trait in post model only if you wish to cache the result of each query.
 
 ## Installation
 To install this app make sure your php version is ^8 and follow the steps bellow:
