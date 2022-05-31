@@ -32,7 +32,7 @@ Route::controller(PostController::class)->group(function (){
 
 
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', HomeController::class)->name('dashboard');
     Route::resource('post', PostController::class)->except(['index', 'show']);
     Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
