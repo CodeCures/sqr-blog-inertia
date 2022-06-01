@@ -15,13 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function (){
-    return inertia('Home', [
-        'name' => 'Courage'
-    ]);
-});
-
+// sleep(2);
+Route::inertia('/', 'Home');
+Route::inertia('/login', 'Auth/Login');
+Route::inertia('/register', 'Auth/Register');
+Route::inertia('/dashboard', 'Dashboard');
 // Route::middleware('guest')->group(function () {
 //     Route::view('/login', 'auth.login')->name('login');
 //     Route::view('/register', 'auth.register')->name('register');
