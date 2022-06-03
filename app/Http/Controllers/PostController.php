@@ -6,6 +6,7 @@ use App\Actions\Post\CreatePost;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Services\PostService;
+use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -16,8 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = PostService::getPosts();
-        return view('home', compact('posts'));
+        return Inertia::render('Home', [
+            'posts' => PostService::getPosts()->through()
+        ]);
     }
 
     /**

@@ -11,7 +11,7 @@
         <p class="text-lg font-medium text-gray-500 sm:text-2xl">Designs and layouts to help you with your app.</p>
         <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
             <div class="grid grid-cols-12 col-span-12 gap-7">
-                <PostItem />
+                <PostItem v-for="post in posts" :key="post.id" />
             </div>
         </div>
     </div>
@@ -28,6 +28,9 @@
 
     export default {
         components: { Footer, HomeNav, PostItem },
+        props: {
+            posts: Object
+        },
         data(){
             return {
                 showMenu: false

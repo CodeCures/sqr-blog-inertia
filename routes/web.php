@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// sleep(2);
-Route::inertia('/', 'Home');
-Route::inertia('/login', 'Auth/Login');
-Route::inertia('/register', 'Auth/Register');
-Route::inertia('/dashboard', 'Dashboard');
+
+// Route::inertia('/login', 'Auth/Login');
+// Route::inertia('/register', 'Auth/Register');
+// Route::inertia('/dashboard', 'Dashboard');
+
 // Route::middleware('guest')->group(function () {
 //     Route::view('/login', 'auth.login')->name('login');
 //     Route::view('/register', 'auth.register')->name('register');
@@ -30,10 +30,10 @@ Route::inertia('/dashboard', 'Dashboard');
 //     Route::post('/register', 'register')->name('auth.register');
 // });
 
-// Route::controller(PostController::class)->group(function (){
-//     Route::get('/', 'index')->name('posts.index');
-//     Route::get('/posts/{post:slug}', 'show')->name('posts.show');
-// });
+Route::controller(PostController::class)->group(function (){
+    Route::get('/', 'index')->name('posts.index');
+    Route::get('/posts/{post:slug}', 'show')->name('posts.show');
+});
 
 
 // Route::middleware('auth')->group(function(){
